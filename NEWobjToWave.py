@@ -38,7 +38,8 @@ class ObjAnimator:
             f.setnchannels(2)
             f.setsampwidth(2)
             f.setframerate(44100)
-            # f.writeframes(sum(self.fileArray))
+            for i in self.fileArray: #this is a really bad solution,in theory can be added all 
+                f.writeframes(i)
     
     def animateRotation(self, draws, rotationPerDraw, drawSpeed):
         print("animate")
@@ -53,6 +54,7 @@ class ObjAnimator:
                     self.addToFileArray(line.walkPos(step)[1])
             vertices = rotateVertices(vertices, rotationPerDraw)
 
-spinCube = ObjAnimator("cube", 0.4)
-spinCube.animateRotation(360, [0,1,0], 0.01)
-spinCube.saveAsFile("test")
+if __name__ == "__main__":
+    spinCube = ObjAnimator("cube", 0.4)
+    spinCube.animateRotation(360, [0,1,0], 0.018)
+    spinCube.saveAsFile("testCube")
